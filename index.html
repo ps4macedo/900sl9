@@ -1,4 +1,5 @@
-<html manifest="Cache.manifest"><head>
+<html manifest="Cache.manifest">
+<head>
 <style>
 body{background-color:#000024;background-attachment:fixed;background-size:100%;background-repeat:no-repeat;font-family:system-ui;text-align:center}
 button:-moz-focus-inner, button:focus{outline:0;border:none}
@@ -14,7 +15,7 @@ window.applicationCache.ondownloading=function(){localStorage.isCached=!1},windo
 <script>  // verifica se a cache foi carregada
 function Esconder(){
 if (localStorage.isCached){
-setTimeout(poc(),150);
+setTimeout(poc,200);
 }
 }
 </script>
@@ -27,7 +28,7 @@ xhr.onload = function(e) {
 if (this.status == 200) {
 payload = this.response;
 SendPayload();
-allset();
+window.progress.innerHTML="<font style='color:#ffffff; text-shadow: 5px 5px 5px #ff5757;'><b>B&nbsp;O&nbsp;A&nbsp;&nbsp;D&nbsp;I&nbsp;V&nbsp;E&nbsp;R&nbsp;S&nbsp;Ã&nbsp;O&nbsp;!&nbsp;!&nbsp;!</b></font>";
 }
 else
 {
@@ -51,17 +52,8 @@ var pthread = p.malloc(0x10);
 chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader, payload_buffer);
 }
 
-function jbdone() {
-hen();
-}
-
-function allset() {
-window.progress.innerHTML= LoadedMSG
-}
-
 function hen(){
 progress.innerHTML="Carregando Goldhen v2.2.2... <font color=\"#ee596f\">Aguarde!</font>";
-LoadedMSG="<font style='color:#ffffff; text-shadow: 5px 5px 5px #ff5757;'><b>B&nbsp;O&nbsp;A&nbsp;&nbsp;D&nbsp;I&nbsp;V&nbsp;E&nbsp;R&nbsp;S&nbsp;Ã&nbsp;O&nbsp;!&nbsp;!&nbsp;!</b></font>";
 PLfile = "hen.bin";
 setTimeout(loadBIN,1000);
 }
@@ -627,7 +619,7 @@ kernel();
 }
 else
 {
-jbdone();
+hen();
 }
 }
 
@@ -984,7 +976,7 @@ chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
 chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
 chain.run();
 alert("\n\n\nNa tentativa de evitar erros, remova o USB agora e clique em OK.");
-setTimeout(jbdone, 1000);
+setTimeout(hen, 1000);
 }
 else
 {
