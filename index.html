@@ -10,13 +10,14 @@ button:active{background:#ee596f;position:relative;color:#000;top:5px;box-shadow
 <meta charset="utf-8">
 <title>PS4MACEDO 9.00 SUPERLIGHT 9</title>
 <script> // carrega a cache
-window.applicationCache.ondownloading=function(){localStorage.isCached=!1},window.applicationCache.onprogress=function(e){document.getElementById("progress").innerHTML='Instalando Cache Offline: <font color="#ee596f">'+Math.round(e.loaded/e.total*100)+"%</font>"},window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML='Cache <font color="#ee596f">instalada</font> com sucesso!!!',localStorage.isCached=!0,setTimeout(function(){document.getElementById("progress").innerHTML='Processo de download da cache para utilizar o <font color="#ee596f">host offline</font>.',document.getElementById("progress").innerHTML='Saia, <font color="#ee596f">desabilite a rede</font> e retorne ao navegador.', cache=true},2e3)}
+window.applicationCache.onprogress=function(e){document.getElementById("progress").innerHTML='Instalando Cache Offline: <font color="#ee596f">'+Math.round(e.loaded/e.total*100)+"%</font>"},window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML='Cache <font color="#ee596f">instalada</font> com sucesso!!!',setTimeout(function(){document.getElementById("progress").innerHTML='Processo de download da cache para utilizar o <font color="#ee596f">host offline</font>.',document.getElementById("progress").innerHTML='Saia, <font color="#ee596f">desabilite a rede</font> e retorne ao navegador.', cache=true},1500)}
 </script>
-<script>  // verifica se a cache foi carregada
+
+<script> // Loader
 function Esconder(){
-if (localStorage.isCached){
-setTimeout(poc,200);
-}
+var appCache = window.applicationCache;
+if(!(appCache.status !== 1 && appCache.status !== 2)){
+setTimeout(poc,500);}
 }
 </script>
 <script> // loader
