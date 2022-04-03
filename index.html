@@ -14,10 +14,7 @@ window.applicationCache.ondownloading=function(){localStorage.isCached=!1},windo
 </script>
 
 <script> // Loader
-function Esconder(){
-if (localStorage.isCached){
-setTimeout(poc,500);}
-}
+
 function loadBIN(){
 var xhr = new XMLHttpRequest();
 xhr.open('GET', PLfile, true);
@@ -58,7 +55,7 @@ setTimeout(loadBIN,1500);
 </script>
 </head>
 
-<body onload=Esconder()>
+<body onload=setTimeout(poc,500)>
 <br><br><br><br><br>
 <h1><center><font style='color:#fff; font-size: 40px; font-weight: bold; margin: 0 0 0 0.0; text-shadow: 3px 2px #ff5757;'><i>PS4MACEDO Fw 9.00 COM GOLDHEN V2.2.2</i></font></center></h1>
 <br><br><br><br>
