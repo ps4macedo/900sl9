@@ -15,7 +15,7 @@ window.applicationCache.ondownloading=function(){localStorage.isCached=!1},windo
 <script> // Loader
 function loadBIN(){
 var xhr = new XMLHttpRequest();
-xhr.open('GET', PLfile, true);
+xhr.open('GET', hen.bin, true);
 xhr.overrideMimeType('text/plain; charset=x-user-defined');
 xhr.onload = function(e) {
 if (this.status == 200) {
@@ -25,7 +25,7 @@ window.progress.innerHTML="<font style='color:#ffffff; text-shadow: 5px 5px 5px 
 }
 else
 {
-alert("Failed to load " + PLfile + " - " + this.status);
+alert("Failed to load hen - " + this.status);
 return;
 }};
 xhr.send();
@@ -45,6 +45,7 @@ chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_
 }
 </script>
 </head>
+
 <body onload=setTimeout(poc,500)>
 <br><br><br><br><br>
 <h1><center><font style='color:#fff; font-size: 40px; font-weight: bold; margin: 0 0 0 0.0; text-shadow: 3px 2px #ff5757;'><i>PS4MACEDO Fw 9.00 COM GOLDHEN V2.2.2</i></font></center></h1>
@@ -605,7 +606,6 @@ kernel();
 else
 {
 progress.innerHTML="Carregando Goldhen v2.2.2... <font color=\"#ee596f\">Aguarde!</font>";
-PLfile = "hen.bin";
 setTimeout(loadBIN,3000);
 }
 }
@@ -962,11 +962,9 @@ chain.fcall(window.syscalls[203], patch_buffer, 0x4000);
 chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
 chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
 chain.run();
-
+alert("\n\n\nNa tentativa de evitar erros, remova o USB agora e clique em OK.");
 progress.innerHTML="Carregando Goldhen v2.2.2... <font color=\"#ee596f\">Aguarde!</font>";
-PLfile = "hen.bin";
 setTimeout(loadBIN,1500);
-
 }
 else
 {
