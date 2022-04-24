@@ -15,7 +15,7 @@ window.applicationCache.ondownloading=function(){localStorage.isCached=!1},windo
 <script> // Loader
 function loadBIN(){
 var xhr = new XMLHttpRequest();
-xhr.open('GET', hen.bin, true);
+xhr.open('GET', PLfile, true);
 xhr.overrideMimeType('text/plain; charset=x-user-defined');
 xhr.onload = function(e) {
 if (this.status == 200) {
@@ -25,12 +25,12 @@ window.progress.innerHTML="<font style='color:#ffffff; text-shadow: 5px 5px 5px 
 }
 else
 {
-alert("Failed to load hen - " + this.status);
+alert("Failed to load " + PLfile + " - " + this.status);
 return;
 }};
 xhr.send();
 }
-function SendPayload() {
+function SendPayload(){
 var payload_buffer = chain.syscall(477, new int64(0x26200000, 0x9), 0x300000, 7, 0x41000, -1, 0);
 var bufLen = payload.length;
 var payload_loader = p.malloc32(bufLen);
@@ -42,6 +42,11 @@ loader_writer[i] = parseInt(hxVal, 16);
 chain.syscall(74, payload_loader, bufLen, (0x1 | 0x2 | 0x4));
 var pthread = p.malloc(0x10);
 chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader, payload_buffer);
+}
+function hen(){
+window.progress.innerHTML="Carregando Goldhen v2.2.2... <font color=\"#ee596f\">Aguarde!</font>";
+PLfile = "hen.bin";
+setTimeout(loadBIN,1500);
 }
 </script>
 </head>
@@ -605,8 +610,7 @@ kernel();
 }
 else
 {
-progress.innerHTML="<font color=\"#ee596f\">ATENÇÃO!!!</font> Goldhen v2.2.2 já está <font color=\"#ee596f\">ATIVO.</font>";
-setTimeout(loadBIN,3000);
+hen();
 }
 }
 
@@ -963,8 +967,7 @@ chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
 chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
 chain.run();
 alert("\n\n\nNa tentativa de evitar erros, remova o USB agora e clique em OK.");
-progress.innerHTML="Carregando Goldhen v2.2.2... <font color=\"#ee596f\">Aguarde!</font>";
-setTimeout(loadBIN,3000);
+setTimeout(hen(), 1500);
 }
 else
 {
