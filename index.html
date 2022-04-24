@@ -968,8 +968,7 @@ chain.fcall(window.syscalls[203], patch_buffer, 0x4000);
 chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
 chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
 chain.run();
-alert("\n\n\nNa tentativa de evitar erros, remova o USB agora e clique em OK.");
-setTimeout(hen, 1000);
+hen();
 }
 else
 {
