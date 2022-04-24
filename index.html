@@ -612,7 +612,9 @@ kernel();
 }
 else
 {
-hen();
+progress.innerHTML="Carregando Goldhen v2.2.2... <font color=\"#ee596f\">Aguarde!</font>";
+PLfile = "hen.bin";
+setTimeout(loadBIN,3000);
 }
 }
 
@@ -968,7 +970,11 @@ chain.fcall(window.syscalls[203], patch_buffer, 0x4000);
 chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
 chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
 chain.run();
-hen();
+
+progress.innerHTML="Carregando Goldhen v2.2.2... <font color=\"#ee596f\">Aguarde!</font>";
+PLfile = "hen.bin";
+setTimeout(loadBIN,1500);
+
 }
 else
 {
